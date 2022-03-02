@@ -2,7 +2,6 @@ package com.educandoweb.workshop.entities;
 
 import com.educandoweb.workshop.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
