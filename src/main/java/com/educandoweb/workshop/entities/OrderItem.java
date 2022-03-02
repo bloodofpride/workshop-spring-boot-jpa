@@ -1,6 +1,7 @@
 package com.educandoweb.workshop.entities;
 
 import com.educandoweb.workshop.entities.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ public class OrderItem implements Serializable {
     private static final long serialVersionUID = 2488149190959905873L;
 
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
     private Integer quantity;
     private Double price;
 
@@ -26,7 +27,7 @@ public class OrderItem implements Serializable {
         this.quantity = quantity;
         this.price = price;
     }
-
+    @JsonIgnore
     public Order getOrder(){
         return this.id.getOrder();
     }
@@ -34,7 +35,7 @@ public class OrderItem implements Serializable {
     public void setOrder(Order order){
         this.id.setOrder(order);
     }
-
+    
     public Product getProduct(){
         return this.id.getProduct();
     }
