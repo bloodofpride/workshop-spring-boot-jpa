@@ -2,6 +2,7 @@ package com.educandoweb.workshop.services;
 
 import com.educandoweb.workshop.entities.User;
 import com.educandoweb.workshop.repositories.UserRepository;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,18 @@ public class UserService {
 
     public void delete(Long id){
         userRepository.deleteById(id);
+    }
+
+    public User update(Long id, User newUser){
+        User user = findById(id);
+        updateData(user,newUser);
+        return userRepository.save(user);
+    }
+
+    private void updateData(User user, User newUser){
+        user.setName(newUser.getName());
+        user.setEmail(newUser.getEmail());
+        user.setName(newUser.getName());
+        user.setPhone(newUser.getPhone());
     }
 }
